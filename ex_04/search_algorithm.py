@@ -116,11 +116,12 @@ def run_simulation(n, target):
 if __name__ == "__main__":
     print("Running Grover's Search Algorithm")
     examples = [
+        (2, "10"),
         (3, "001"),
         (3, "011"),
         (3, "101"),
+        (3, "110"),
         (3, "111"),
-        (2, "10"),
         (4, "1010"),
     ]
     print(f"\n******************* GROVER SEARCH ALGORITHM *****************")
