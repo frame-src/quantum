@@ -18,6 +18,3 @@ In Qiskit, circuits can be defined in one of two regimes:
 an abstract circuit, which is defined in terms of virtual qubits and arbitrary high-level operations, like encapsulated algorithms and user-defined gates.
 a physical circuit, which is defined in terms of the hardware qubits of one particular backend, and contains only operations that this backend natively supports. You might also see this concept referred to as an ISA circuit.
 
-
-
-
