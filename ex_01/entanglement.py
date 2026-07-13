@@ -12,13 +12,14 @@ import matplotlib.pyplot as plt
 
 bell = QuantumCircuit(2)
 bell.h(0)
+
 bell.cx(0, 1)
 bell.measure_all()
 
 bell.draw("mpl")
 
 simulator = AerSimulator()
-result = simulator.run(bell).result()
+result = simulator.run(bell, shots=500).result()
 
 # plot the result
 plot_histogram(result.get_counts(bell))
