@@ -13,7 +13,7 @@ NUM_QUBITS = 3
 #         if bit == "1":
 #             qc.x(qubit)
 #     return qc
-ORACLE_IS = 'BALANCED'
+ORACLE_IS = 'CONSTANT'
 
 def balanced_oracle():
     # This function implements a balanced oracle for a given quantum circuit
@@ -23,8 +23,8 @@ def balanced_oracle():
     qc = QuantumCircuit(NUM_QUBITS + 1)
 
     #------- simple balanced func -----
-    # for i in range(NUM_QUBITS):
-    #     qc.cx(i, NUM_QUBITS)
+    for i in range(NUM_QUBITS):
+        qc.cx(i, NUM_QUBITS)
     
     #------- random balanced func -----
     # Choose half the possible input strings    
@@ -69,9 +69,9 @@ def dj_query(num_qubits):
     # satisfying the promise for the Deutsch-Jozsa problem.
 
     qc = QuantumCircuit(num_qubits + 1)
-    if np.random.randint(0, 2):
-        # Flip output qubit (ANCILLA) with 50% chance
-        qc.x(num_qubits)
+    # if np.random.randint(0, 2):
+        # Flip output qubit with 50% chance
+    # qc.x(num_qubits)
     if ORACLE_IS == 'CONSTANT':
         oracle = constant_oracle()
     else:

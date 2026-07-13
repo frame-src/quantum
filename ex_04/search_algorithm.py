@@ -1,6 +1,7 @@
 import math
 import os
 
+import numpy as np
 from qiskit import QuantumCircuit, ClassicalRegister, transpile
 from qiskit_aer import AerSimulator
 from qiskit.visualization import plot_histogram
@@ -51,6 +52,9 @@ def create_circuit_diffuser(n):
 
 
 def grover(n, target):
+    # minimum necessary for the algorithm to work
+    # iterations = round(np.arccos(1/n)/(2*np.arccos(np.sqrt((n-1)/n))))
+    # rough approx: 
     iterations = max(1, math.floor(math.pi / 4 * math.sqrt(2**n)))
 
     cr = ClassicalRegister(n, "result")
@@ -82,7 +86,6 @@ def run_simulation(n, target):
     print("___________________________________________________________________________________________")
     print(f"Target      : {target}      |     Number ofQubits      : {n}      |  Iterations  : {iterations}")
     print("___________________________________________________________________________________________")
-
 
     simulator = AerSimulator()
     counts = simulator.run(
@@ -123,9 +126,4 @@ if __name__ == "__main__":
     print(f"\n******************* GROVER SEARCH ALGORITHM *****************")
 
     for n, target in examples:
-        if n == 2:
-            print(f"___________________________________________________________________________________________\
-                \nSkipping {n}-qubit because case (not supported)\n\
-___________________________________________________________________________________________")
-            continue
         run_simulation(n, target)
