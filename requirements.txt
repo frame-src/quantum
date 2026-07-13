@@ -3,3 +3,7 @@ qiskit-aer
 qiskit-ibm-runtime
 matplotlib
 pylatexenc
+sympy
+ipython
+jupyter
+python-dotenv
